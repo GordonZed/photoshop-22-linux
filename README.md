@@ -1,8 +1,8 @@
-# Adobe Photoshop CC 2021 installer for Linux!
+# Adobe Photoshop CC 2021 installer for Linux
 
-# [THIS REPOSITORY HAS BEEN ARCHIVED](https://github.com/YoungFellow-le/photoshop-22-linux/discussions/26)
+![image](https://github.com/GordonZed/photoshop-22-linux/blob/main/screenshot.png)
 
-![image](https://github.com/YoungFellow-le/photoshop-22-linux/blob/main/images/screenshot.png)
+Tested in Fedora 38+ as well as Pop!_OS (Ubuntu 22.04 LTS base). Let me know how it goes if you try it elsewhere.
 
 ## DISCLAIMER:
 **Please use this software only if you have an active Photoshop subscription. I'm not responsible for any illegal use of this product.**
@@ -11,29 +11,32 @@
 - An internet connection
 - All **read** and **write** rights on your home folder and the folder of installation
 - `git`
-- `wine` >=6.1 (Avoid 6.20 to 6.22)
-- `gdown` - required to download the Photoshop components (To install: `pip install gdown`)
 - `tar`
 - `wget`
 - `curl`
+- `wine` >=6.22 (Avoid your distro's default \[usually outdated\] Wine package; add the distro-appropriate [WineHQ stable repo](https://wiki.winehq.org/Download))
+- `gdown` - (To install: `pip install gdown`)
 - Vulkan capable GPU or APU _(optional)_
 - `appmenu-gtk-module` _(optional)_
 
 
 ## Installation guide:
 
->_**NOTE:** The total download size, is around 1.6GB_
+>_**NOTE:** The total download size, is around 1.2GB_
 
 >_**NOTE 2:** CLONE THIS REPO TO THE FOLDER YOU WANT TO KEEP PHOTOSHOP IN, EVERYTHING TO DO WITH THE PHTOTOSHOP INSTALLATION WILL HAPPEN THERE_
 
 >_**NOTE 3:** THE ONLY FILE THAT WILL BE INSTALLED OUTSIDE THE CLONED FOLDER IS THE DESKTOP ENTRY: ~/.local/share/applications/photoshop.desktop_
+
+>_**NOTE 4:** After installation, feel free to tidy up downloaded files (\[cloned_repo\]/installation_files/[downloaded_files].tar.xz). The installation will be in a new directory called "Ps-prefix", so that's the one directory (+files therein) you shouldn't touch._
+
 
 Open your terminal and:
 
 ```bash
 # Clone the repo
 
-git clone https://github.com/YoungFellow-le/photoshop-22-linux.git
+git clone https://github.com/GordonZed/photoshop-22-linux.git
 cd photoshop-22-linux
 
 # Run the main-menu file:
@@ -53,14 +56,13 @@ cd photoshop-22-linux
 [Choose options 1-6 or 7 to exit]:
 "
 # To install photoshop select option "1"
-# The installer will ask you if you want to install the Adobe Camera Raw Plugin (that is yes in most cases)
-# If you don't want to install it the enter 'y', otherwise enter 'n' (You can install it later from the menu if you like) e.g.
+# The installer will ask you if you want to install the Adobe Camera Raw Plugin (y/n)
 
 "Would you like to install Adobe Camera Raw at the end?
 (y/n): y"
 
 # The installer will also ask you weather you want to install vdk3d proton,
-# this utility allows you to use your GPU with wine.
+# this utility allows you to use your GPU with wine (AMD GPUs might require some extra finesse; will try to add some info on that front when I have some free time).
 
 "Would you like to install vdk3d proton?
 (y/n): n"
@@ -97,8 +99,8 @@ Photoshop uninstalled!"
 
 # If you want to completely remove this installer, then delete the cloned folder after running the uninstaller.
 ```
-<details closed>
-<summary>COMMON GDOWN ERROR</summary>
+
+### Install Files Fail to Download 
 
 Sometimes, this error can show up:
 ```bash
@@ -111,65 +113,28 @@ You may still be able to access the file from the browser:
 
 	 https://drive.google.com/uc?id=...
 ```
+If this occurs, open scripts/installer.sh in your favourite text editor (**omg!** that's my favourite text editor ***too!***) and grab the file ID from line 94 (random string in quote marks).
 
-* **Uninstalling `gdown` by `pip uninstall gdown`, and then reinstalling with `pip install gdown` fixes this issue.**
-* If that doesn't fix the problem, there are some other potential ways to fix the issue: [[1]](https://github.com/wkentaro/gdown/issues/43#issuecomment-638232081) [[2]](https://github.com/wkentaro/gdown/issues/43#issuecomment-1278345755) [[3]](https://github.com/wkentaro/gdown/issues/43#issuecomment-1328098120)
-* Opening this link in the browser and downloading the file manually `.../photoshop-22-linux/installation_files` is also viable as a workaround. 
-</details>
+Insert the ID into this URL format: https://drive.google.com/file/d/***FILE_UUID_GOES_HERE***/view?usp=drive_link, and manually download `allredist.tar.xv` to the `installation_files` directory.
+
+Now rinse and repeat using the file ID on line 100.
+
+Re-run the script.
 
 ## Configure Photoshop:
 <br>
 
-**1-** Launch Photoshop and go to: `Edit -> preferences -> tools`, and uncheck "_Show Tooltips_" (You will not be able to use any plugins otherwise).
+**1-** Launch Photoshop and go to: `Edit -> preferences -> tools`, and uncheck "_Show Tooltips_" (You will not be able to use any plugins otherwise (also they like to get stuck to the screen which is very annoying)).
 
-<br>
 
 **2-** **ONLY IF YOU INSTALLED VKD3D PROTON**:  Go to: `Edit -> preferences -> Camera raw... -> performance` and set "_Use graphic processor_" to "_Off_"
 
-<br>
+## Launching Photoshop
 
-## To change the wine theme to light Windows 10:
-  ```bash
-  # Navigate to the Photoshop clone folder and start the main menu e.g.
-  
-  cd ~/Documents/photoshop-22-linux
-  ./main-menu.sh
-  
-  # And select option 5
-  
-  "[Choose options 1-6 or 7 to exit]: 5"
-  
-  # Now navigate to the "Desktop integration" tab and change the theme to "Light"
-  
-  ```
-## How to run Photoshop:
+Desktop entry should be created automatically. Open your application launcher and look for "Photoshop CC".
 
-After you run the installer, open your application menu, and search for "Photoshop CC", and click on it. As simple as that!
+[image](https://github.com/GordonZed/photoshop-22-linux/blob/main/launcher-screenshot.png)
 
+## Happy Shooping
 
-![image](https://github.com/YoungFellow-le/photoshop-22-linux/blob/main/images/menu.png)
-
-
->_**NOTE:** If you do not find the desktop entry, or if it doesn't work, then run the`launcher.sh` file. This command should launch Photoshop for you, or it will at least tell you what the error is. (This command is also printed at the end of the installation)_
-
-## To-Do:
-
-- [x] Add a sum verification for large downloaded files (`ps_components.tar.xz` `CameraRaw_12_2_1.exe`)
-
-- [x] Check wether Photoshop is installed before installing (does the "_Ps-prefix_" folder exist?)
-
-- [X] ~Colour code the output~ Colour code the output of all scripts using a `printMessage` function
-
-- [ x ] Move all functions to a function script
-
-- [ ] ~Check that components are installed in the installer~ Improve dependencies checking
-
-- [ ] Sort out the "open with Photoshop" issue
-
-- [ ] Add ability to create multiple prefixes
-
-
-## CREDITS
-
-+ All credit goes to [MiMillieuh](https://github.com/MiMillieuh) for finding the components that make Photoshop run using `wine`.
-+ I only take credit for creating the installer itself, not for any testing or experimenting.
+Let me know if you have any issues, or if the install file links go down. I'll try to tweak and improve this when I can.
