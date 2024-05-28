@@ -121,6 +121,15 @@ Now rinse and repeat using the file ID on line 100.
 
 Re-run the script.
 
+## If that doesn't work (I'm sure GDrive caps you at some point)
+
+[https://mediocre.g.eneri.ca/psinstall](https://mediocre.g.eneri.ca/psinstall)
+
+## If that doesn't work either...
+
+[https://web.archive.org/web/20240528095955/https://mediocre.g.eneri.ca/psinstall/](https://web.archive.org/web/20240528095955/https://mediocre.g.eneri.ca/psinstall/)
+
+
 ## Configure Photoshop:
 <br>
 
