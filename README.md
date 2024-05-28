@@ -133,7 +133,7 @@ Re-run the script.
 
 Desktop entry should be created automatically. Open your application launcher and look for "Photoshop CC".
 
-[image](https://github.com/GordonZed/photoshop-22-linux/blob/main/launcher-screenshot.png)
+![image](https://github.com/GordonZed/photoshop-22-linux/blob/main/launcher-screenshot.png)
 
 ## Happy Shooping
 
